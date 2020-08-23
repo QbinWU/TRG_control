@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<!-- <Firdt show the green light pic or video--> 
+<body>
+    <div id="image-box" class="bg">
+        <img id="image" class="back-image" src="https://plms.oss-cn-shanghai.aliyuncs.com/traffic-light%20screen%20-%20off.png" />
+    </div>
+</body>
+
+<!-- SWITCH between two pic or video -->
+<script>
+    const image = document.getElementById("image");
+    const socket = io();
+    let index = 0;
+    const imgURL = [
+        "https://plms.oss-cn-shanghai.aliyuncs.com/traffic-light%20screen%20-%20off.png",
+        "https://plms.oss-cn-shanghai.aliyuncs.com/traffic-light%20screen%20-%20on.png",
+    ]
+        // One is the URL for the green and the other is red. Then use the loop to switch between each other.
+
+    socket.on("switch", () => {
+        // if (num >= 2) {
+        //     num = 0;
+        // } else {
+        //     num = num + 1;
+        // }
+        index = index >= imgURL.length-1 ? 0 : index + 1;
+        image.src = imgURL[index]
+    })
+    
+</script>
+<style>
+    html,body{
+        margin: 0;
+    }
+    .back-image {
+        width: 100%;
+    }
+</style>
+</html>
