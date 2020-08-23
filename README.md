@@ -1,5 +1,5 @@
 
-Two device should be in the networl
+Two device should be in the network
 
 run  in  terminate： node app.js
 
